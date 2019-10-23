@@ -11,4 +11,3 @@ document.write(Cheese);
 document.write(Face);
 document.write(4 + 8);
 document.write(Number(Face) + 13);
-
