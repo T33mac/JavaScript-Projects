@@ -1,5 +1,5 @@
 function makeItWork() {
-    var str = "Big things, Big things!";
+    var str = "Big things! Big things!";
     var result = str.fontsize(22);
     document.getElementById("bigtime").innerHTML = result;
 }
@@ -9,3 +9,4 @@ function addIt() {
     sentence += " for a nap.";
     document.getElementById("Concatenate").innerHTML = sentence;
 }
+
