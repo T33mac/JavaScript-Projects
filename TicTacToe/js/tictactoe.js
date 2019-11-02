@@ -5,7 +5,7 @@ function watch() {
     var btn = document.getElementById('btnStop');
     btnDisabled(btn);//game has not started
 }
-square1Animate
+
 //this function will roll for random number twice, one for 
 //each player and determine hwich player won the roll.
 function rollForTurn() {
@@ -75,7 +75,7 @@ function startGame() {
 
 // this funcction styles the game buttons while they are disabled
 function btnDisabled(btn) {
-    btn.style.color = "#fff"; //added a #
+    btn.style.color = "fff"; //added a #
     btn.style.border = "2px solid rgb(153, 153, 102)";
     btn.style.backgroundColor = "rgb(214, 214, 194)";
     btn.disabled = true;
@@ -109,16 +109,16 @@ function stopGame() {
     showPlayer.style.color = 'red';
 
     //reset all squares to empty
-    var arrayO = document.getElementById("O");
-    var arrayX = document.getElementById("X");
-    for (var i = 0; i<arrayO.length; i++) {
-        arrayO[i].style.transform = "translateY(-100%)";
-    } 
-    for (var i = 0; i<arrayX.length; i++) {
-        arrayX[i].style.transform = "translateY(100%)";
-    }
-    // this clears running log of game moves
-    document.getElementById('boardState').innerHTML = "";
+    var arrayO = document.getElementsByClassName("O");
+	var arrayX = document.getElementsByClassName("X");
+	for (var i=0; i<arrayO.length;i++) {
+		arrayO[i].style.transform = "translateY(-100%)";
+	}
+	for (var i=0; i<arrayX.length;i++) {
+		arrayX[i].style.transform = "translateY(100%)";
+	}
+	// this clears the running log of all game moves
+	document.getElementById('boardState').innerHTML = "";
 }
 
 //  this function will show the message console and any text it may have
@@ -146,24 +146,24 @@ function clearMsg() {
 //this function is for the player config panel and checks the
 //proposed avatar assignments and prevents them from being the same
 function saveSettings() {
-    var p1Index = document.getElementById("player1").selectedIndex;
+	var p1Index = document.getElementById("player1").selectedIndex;
     var p1Selected = document.getElementById("player1").options;
-    var p2Index = document.getElementById("player2").selectedIndex;
+	var p2Index = document.getElementById("player2").selectedIndex;
     var p2Selected = document.getElementById("player2").options;
-    if (p1Selected[p1Index].text == p2Selected[p2Index].text) {
-        alert("Error - Player 1 and Player 2 cannot both be assigned as: "+p1Selected[p1Index].text)
-    } else {
-        document.getElementById('p1Display').innerHTML=p1Selected[p1Index].text;
-        document.getElementById('p2Display').innerHTML=p2Selected[p2Index].text;
-    }
+	if (p1Selected[p1Index].text == p2Selected[p2Index].text) {
+		alert("Error - Player 1 and Player 2 cannot both be assigned as: "+p1Selected[p1Index].text)
+	} else {
+		document.getElementById('p1Display').innerHTML=p1Selected[p1Index].text;
+		document.getElementById('p2Display').innerHTML=p2Selected[p2Index].text;
+	}
 }
 
 // This function returns the currently assigned avatar for each player
 function getAvatars() {
-    var p1Avatar = document.getElementById("p1Display").innerHTML;
+	var p1Avatar = document.getElementById("p1Display").innerHTML;
     var p2Avatar = document.getElementById("p2Display").innerHTML;
-    var avatarArray = [p1Avatar, p2Avatar];
-    return avatarArray;
+	var avatarArray = [p1Avatar,p2Avatar];
+	return avatarArray;
 }
 
 //This will return the active player's avatar
@@ -183,12 +183,12 @@ function determineAvatar() {
 
 // changes active player to the other player
 function avatarPlaced() {
-    var parseText = document.getElementById('gameMsg').innerHTML;
-    var showPlayer = document.getElementById('showPlayer'); //select current element to memory
+	var parseText = document.getElementById('gameMsg').innerHTML;
+	var showPlayer = document.getElementById('showPlayer'); //select current element to memory
     // check if there is already a winner... determines to continue or not
-    if (parseText == "That's three in a row, Player 1 wins!" || parseText == "That's three in a row, Player 2 wins!") {
-        showPlayer.innerHTML = "Game Stopped";
-        showPlayer.style.color = 'red';
+    if (parseText == "That's three in a row, Player 1 wins!" || parseText == "That's three in a row, Player 2 wins!"){
+		showPlayer.innerHTML = "Game Stopped";
+		showPlayer.style.color='red';
     }
     activePlayer = showPlayer.innerHTML; //get current player from element
     if (activePlayer == "Player 1") { //when active player selects change active player
@@ -253,7 +253,7 @@ function checkForWinCon() {
 
 // call to check for a tie
 function check4Tie() {
-    var boardState = document.getElementById('boardState').innerHTML;
+	var boardState = document.getElementById('boardState').innerHTML;
     boardState = boardState.substring(1); // remove leading comma
     boardState = boardState.split(',');
     var check = document.getElementById('gameMsg').innerHTML;
@@ -284,54 +284,54 @@ function winner(winDetected, winCon) {
 
 // will make the winning squares light up
 function glowBoard(pos) {
-    var index0 = pos[0];
-    var index1 = pos[1];
-    var index2 = pos[2];
-    var squares = document.getElementsByClassName('square')
-    for (var i =0; i<squares.length;i++) {
-        if (i == index0) {
-            var bg1 = squares[i];
-            blink();
-            winSound();
-            setTimeout(function() {bg1.style.backgroundColor = 'rgb(244, 179, 66)';}, 100);
-            setTimeout(function() {bg1.style.backgroundColor = 'rgb(244, 238, 66)';}, 200);
-            setTimeout(function() {bg1.style.backgroundColor = 'rgb(197, 244, 66)';}, 300);
-            setTimeout(function() {bg1.style.backgroundColor = 'rgb(122, 244, 66)';}, 400);
-            setTimeout(function() {bg1.style.backgroundColor = 'rgb(66, 244, 235)';}, 500);
-            setTimeout(function() {bg1.style.backgroundColor = 'rgb(244, 179, 66)';}, 600);
-            setTimeout(function() {bg1.style.backgroundColor = 'rgb(244, 238, 66)';}, 700);
-            setTimeout(function() {bg1.style.backgroundColor = 'rgb(197, 244, 66)';}, 800);
-            setTimeout(function() {bg1.style.backgroundColor = 'rgb(122, 244, 66)';}, 900);
-            setTimeout(function() {bg1.style.backgroundColor = 'rgb(66, 244, 235)';}, 1000);
-            setTimeout(function() {bg1.style.backgroundColor = '#d7f3f7';}, 1100);
-        } else if (i = index1) {
-            var bg2 = squares[i];
-            setTimeout(function() {bg2.style.backgroundColor = 'rgb(66, 244, 235)';}, 100);
-            setTimeout(function() {bg2.style.backgroundColor = 'rgb(122, 244, 66)';}, 200);
-            setTimeout(function() {bg2.style.backgroundColor = 'rgb(244, 238, 66)';}, 300);
-            setTimeout(function() {bg2.style.backgroundColor = 'rgb(197, 244, 66)';}, 400);
-            setTimeout(function() {bg2.style.backgroundColor = 'rgb(244, 179, 66)';}, 500);
-            setTimeout(function() {bg2.style.backgroundColor = 'rgb(66, 244, 235)';}, 600);
-            setTimeout(function() {bg2.style.backgroundColor = 'rgb(122, 244, 66)';}, 700);
-            setTimeout(function() {bg2.style.backgroundColor = 'rgb(197, 244, 66)';}, 800);
-            setTimeout(function() {bg2.style.backgroundColor = 'rgb(244, 238, 66)';}, 900);
-            setTimeout(function() {bg2.style.backgroundColor = 'rgb(244, 179, 66)';}, 1000);
-            setTimeout(function() {bg2.style.backgroundColor = '#d7f3f7';}, 1100);
-        } else if (i = index2) {
-            var bg3 = squares[i];
-            setTimeout(function() {bg3.style.backgroundColor = 'rgb(244, 179, 66)';}, 100);
-            setTimeout(function() {bg3.style.backgroundColor = 'rgb(244, 238, 66)';}, 200);
-            setTimeout(function() {bg3.style.backgroundColor = 'rgb(197, 244, 66)';}, 300);
-            setTimeout(function() {bg3.style.backgroundColor = 'rgb(122, 244, 66)';}, 400);
-            setTimeout(function() {bg3.style.backgroundColor = 'rgb(66, 244, 235)';}, 500);
-            setTimeout(function() {bg3.style.backgroundColor = 'rgb(244, 179, 66)';}, 600);
-            setTimeout(function() {bg3.style.backgroundColor = 'rgb(244, 238, 66)';}, 700);
-            setTimeout(function() {bg3.style.backgroundColor = 'rgb(197, 244, 66)';}, 800);
-            setTimeout(function() {bg3.style.backgroundColor = 'rgb(122, 244, 66)';}, 900);
-            setTimeout(function() {bg3.style.backgroundColor = 'rgb(66, 244, 235)';}, 1000);
-            setTimeout(function() {bg3.style.backgroundColor = '#d7f3f7';}, 1100);
-        }
-    } 
+	var index0 = pos[0];
+	var index1 = pos[1];
+	var index2 = pos[2];
+	var squares = document.getElementsByClassName('square')
+	for (var i=0;i<squares.length;i++){
+		if (i == index0) {
+			var bg1 = squares[i];
+			blink();
+			winSound();
+			setTimeout(function() {bg1.style.backgroundColor = 'rgb(244, 179, 66)';}, 100);
+			setTimeout(function() {bg1.style.backgroundColor = 'rgb(244, 238, 66)';}, 200);
+			setTimeout(function() {bg1.style.backgroundColor = 'rgb(197, 244, 66)';}, 300);
+			setTimeout(function() {bg1.style.backgroundColor = 'rgb(122, 244, 66)';}, 400);
+			setTimeout(function() {bg1.style.backgroundColor = 'rgb(66, 244, 235)';}, 500);
+			setTimeout(function() {bg1.style.backgroundColor = 'rgb(244, 179, 66)';}, 600);
+			setTimeout(function() {bg1.style.backgroundColor = 'rgb(244, 238, 66)';}, 700);
+			setTimeout(function() {bg1.style.backgroundColor = 'rgb(197, 244, 66)';}, 800);
+			setTimeout(function() {bg1.style.backgroundColor = 'rgb(122, 244, 66)';}, 900);
+			setTimeout(function() {bg1.style.backgroundColor = 'rgb(66, 244, 235)';}, 1000);
+			setTimeout(function() {bg1.style.backgroundColor = '#d7f3f7';}, 1100);
+		} else if (i == index1) {
+			var bg2 = squares[i];
+			setTimeout(function() {bg2.style.backgroundColor = 'rgb(66, 244, 235)';}, 100);
+			setTimeout(function() {bg2.style.backgroundColor = 'rgb(122, 244, 66)';}, 200);
+			setTimeout(function() {bg2.style.backgroundColor = 'rgb(197, 244, 66)';}, 300);
+			setTimeout(function() {bg2.style.backgroundColor = 'rgb(244, 238, 66)';}, 400);
+			setTimeout(function() {bg2.style.backgroundColor = 'rgb(244, 179, 66)';}, 500);
+			setTimeout(function() {bg2.style.backgroundColor = 'rgb(66, 244, 235)';}, 600);
+			setTimeout(function() {bg2.style.backgroundColor = 'rgb(122, 244, 66)';}, 700);
+			setTimeout(function() {bg2.style.backgroundColor = 'rgb(197, 244, 66)';}, 800);
+			setTimeout(function() {bg2.style.backgroundColor = 'rgb(244, 238, 66)';}, 900);
+			setTimeout(function() {bg2.style.backgroundColor = 'rgb(244, 179, 66)';}, 1000);
+			setTimeout(function() {bg2.style.backgroundColor = '#d7f3f7';}, 1100);
+		} else if (i == index2) {
+			var bg3 = squares[i];
+			setTimeout(function() {bg3.style.backgroundColor = 'rgb(244, 179, 66)';}, 100);
+			setTimeout(function() {bg3.style.backgroundColor = 'rgb(244, 238, 66)';}, 200);
+			setTimeout(function() {bg3.style.backgroundColor = 'rgb(197, 244, 66)';}, 300);
+			setTimeout(function() {bg3.style.backgroundColor = 'rgb(122, 244, 66)';}, 400);
+			setTimeout(function() {bg3.style.backgroundColor = 'rgb(66, 244, 235)';}, 500);
+			setTimeout(function() {bg3.style.backgroundColor = 'rgb(244, 179, 66)';}, 600);
+			setTimeout(function() {bg3.style.backgroundColor = 'rgb(244, 238, 66)';}, 700);
+			setTimeout(function() {bg3.style.backgroundColor = 'rgb(197, 244, 66)';}, 800);
+			setTimeout(function() {bg3.style.backgroundColor = 'rgb(122, 244, 66)';}, 900);
+			setTimeout(function() {bg3.style.backgroundColor = 'rgb(66, 244, 235)';}, 1000);
+			setTimeout(function() {bg3.style.backgroundColor = '#d7f3f7';}, 1100);
+		}
+	}
     setTimeout(function() {stopGame();}, 1200);
 }
 
@@ -340,7 +340,7 @@ function squareSound() {
     var sound = document.getElementById("placeAvatar");
     sound.play();
     setTimeout(function() {sound.pause();}, 400); //to keep sound short
-    setTimeout(function() {sound.currentTime = 0}, 500);
+    setTimeout(function() {sound.currentTime = 0;}, 500);
 }
 function tieSound() {
     var sound = document.getElementById("tieGame");
@@ -351,7 +351,7 @@ function winSound() {
     var sound = document.getElementById("winGame");
     setTimeout(function() {sound.play();}, 500); 
     setTimeout(function() {sound.pause();}, 2700);  //to keep sound short
-    setTimeout(function() {sound.currentTime = 0}, 2800);
+    setTimeout(function() {sound.currentTime = 0;}, 2800);
 }
 function diceRoll() {
     var sound = document.getElementById("diceRoll");
@@ -408,6 +408,8 @@ function checkWinCon1(info, squareArray) {
     }
     winner(winDetected, winCon1);
 }
+
+
 function checkWinCon2(info, squareArray) {
     var winCon2 = [3,4,5];
     var winDetected = "on";
@@ -425,12 +427,12 @@ function checkWinCon2(info, squareArray) {
     if (match3Avatar != undefined && match4Avatar != undefined && match5Avatar != undefined) {
         if (match3Avatar == match4Avatar && match3Avatar == match5Avatar) {
             winDetected = "win"; // this flag will pass when win detected
-            winner(winDetected, winCon2);
-            return;
         }
     }
     winner(winDetected, winCon2);
 }
+
+
 function checkWinCon3(info, squareArray) {
     var winCon3 = [6,7,8];
     var winDetected = "on";
@@ -448,12 +450,12 @@ function checkWinCon3(info, squareArray) {
     if (match6Avatar != undefined && match7Avatar != undefined && match8Avatar != undefined) {
         if (match6Avatar == match7Avatar && match6Avatar == match8Avatar) {
             winDetected = "win"; // this flag will pass when win detected
-            winner(winDetected, winCon3);
-            return;
         }
     }
     winner(winDetected, winCon3);
 }
+
+
 function checkWinCon4(info, squareArray) {
     var winCon4 = [0,3,6];
     var winDetected = "on";
@@ -471,12 +473,12 @@ function checkWinCon4(info, squareArray) {
     if (match0Avatar != undefined && match3Avatar != undefined && match6Avatar != undefined) {
         if (match0Avatar == match3Avatar && match0Avatar == match6Avatar) {
             winDetected = "win"; // this flag will pass when win detected
-            winner(winDetected, winCon4);
-            return;
         }
     }
     winner(winDetected, winCon4);
 }
+
+
 function checkWinCon5(info, squareArray) {
     var winCon5 = [1,4,7];
     var winDetected = "on";
@@ -494,12 +496,12 @@ function checkWinCon5(info, squareArray) {
     if (match1Avatar != undefined && match4Avatar != undefined && match7Avatar != undefined) {
         if (match1Avatar == match4Avatar && match1Avatar == match7Avatar) {
             winDetected = "win"; // this flag will pass when win detected
-            winner(winDetected, winCon5);
-            return;
         }
     }
     winner(winDetected, winCon5);
 }
+
+
 function checkWinCon6(info, squareArray) {
     var winCon6 = [2,5,8];
     var winDetected = "on";
@@ -517,14 +519,37 @@ function checkWinCon6(info, squareArray) {
     if (match2Avatar != undefined && match5Avatar != undefined && match8Avatar != undefined) {
         if (match2Avatar == match5Avatar && match2Avatar == match8Avatar) {
             winDetected = "win"; // this flag will pass when win detected
-            winner(winDetected, winCon6);
-            return;
         }
     }
     winner(winDetected, winCon6);
 }
+
+
 function checkWinCon7(info, squareArray) {
-    var winCon7 = [0,4,8];
+    var winCon7 = [6,4,2];
+    var winDetected = "on";
+    for (var i in info) {
+        if (info[i].charAt(0) == "6") {
+            var match6Avatar = info[i].charAt(1);
+        }
+        if (info[i].charAt(0) == "4") {
+            var match4Avatar = info[i].charAt(1);
+        }
+        if (info[i].charAt(0) == "2") {
+            var match2Avatar = info[i].charAt(1);
+        }
+    }
+    if (match6Avatar != undefined && match4Avatar != undefined && match2Avatar != undefined) {
+        if (match6Avatar == match4Avatar && match6Avatar == match2Avatar) {
+            winDetected = "win"; // this flag will pass when win detected
+        }
+    }
+    winner(winDetected, winCon7);
+}
+
+
+function checkWinCon8(info, squareArray) {
+    var winCon8 = [0,4,8];
     var winDetected = "on";
     for (var i in info) {
         if (info[i].charAt(0) == "0") {
@@ -540,255 +565,230 @@ function checkWinCon7(info, squareArray) {
     if (match0Avatar != undefined && match4Avatar != undefined && match8Avatar != undefined) {
         if (match0Avatar == match4Avatar && match0Avatar == match8Avatar) {
             winDetected = "win"; // this flag will pass when win detected
-            winner(winDetected, winCon7);
-            return;
-        }
-    }
-    winner(winDetected, winCon7);
-}
-function checkWinCon8(info, squareArray) {
-    var winCon8 = [2,4,6];
-    var winDetected = "on";
-    for (var i in info) {
-        if (info[i].charAt(0) == "2") {
-            var match2Avatar = info[i].charAt(1);
-        }
-        if (info[i].charAt(0) == "4") {
-            var match4Avatar = info[i].charAt(1);
-        }
-        if (info[i].charAt(0) == "6") {
-            var match6Avatar = info[i].charAt(1);
-        }
-    }
-    if (match2Avatar != undefined && match4Avatar != undefined && match6Avatar != undefined) {
-        if (match2Avatar == match4Avatar && match2Avatar == match6Avatar) {
-            winDetected = "win"; // this flag will pass when win detected
-            winner(winDetected, winCon8);
-            return;
         }
     }
     winner(winDetected, winCon8);
 }
 
-//------------------------------------------
-//These are for click events on square elements
-//-----------------------------------------
+//---------------------------------------------------------------------------------------
+// These block of functions are for each click event of their corresponding square element
+//---------------------------------------------------------------------------------------
 function square1Animate() {
-    var activePlayer = document.getElementById('showPlayer').innerHTML;
-    if (activePlayer != "Game Stopped") {
-        var square = "0";
-        //
-        var verdict = recordMoves(square);
-        if (verdict == undefined) {
-            var paintAvatar = determineAvatar();                                                   //
-            var selected = document.getElementsByClassName(paintAvatar)[0];     // add '' around paint avatar ?????
-            if (paintAvatar == "0") {                                                             //
-                AnimateO(selected);
-            }  else if (paintAvatar == "X") {
-                AnimateX(selected);
-            }
-            //
-            var currentMove = ","+square+paintAvatar;
-            recordMove(currentMove);
-            checkForWinCon();
-            avatarPlaced(square, paintAvatar);
-            squareSound();
-        }
-    }
+	var activePlayer = document.getElementById('showPlayer').innerHTML;
+	if (activePlayer != "Game Stopped") { 
+		var square = "0"; 
+		//
+		var verdict = recordMoves(square);
+		if (verdict == undefined) { 
+			var paintAvatar = determineAvatar(); 
+			var selected = document.getElementsByClassName(paintAvatar)[0]; 
+			if (paintAvatar == "O") { 
+				animateO(selected); 
+			} else if (paintAvatar == "X") {
+				animateX(selected); 
+			}
+			
+			var currentMove = ","+square+paintAvatar;
+			recordMove(currentMove);
+			checkForWinCon(); 
+			avatarPlaced(square,paintAvatar); 
+			squareSound(); 
+		}
+	}
 }
 function square2Animate() {
-    var activePlayer = document.getElementById('showPlayer').innerHTML;
-    if (activePlayer != "Game Stopped") {
-        var square = "1";
-        //
-        var verdict = recordMoves(square);
-        if (verdict == undefined) {
-            var paintAvatar = determineAvatar();                                                   //
-            var selected = document.getElementsByClassName(paintAvatar)[0];     // add '' around paint avatar ?????
-            if (paintAvatar == "0") {                                                             //
-                AnimateO(selected);
-            }  else if (paintAvatar == "X") {
-                AnimateX(selected);
-            }
-            //
-            var currentMove = ","+square+paintAvatar;
-            recordMove(currentMove);
-            checkForWinCon();
-            avatarPlaced(square, paintAvatar);
-            squareSound();
-        }
-    }
+	var activePlayer = document.getElementById('showPlayer').innerHTML;
+	if (activePlayer != "Game Stopped") { 
+		var square = "1"; 
+		
+		var verdict = recordMoves(square);
+		if (verdict == undefined) { 
+			var paintAvatar = determineAvatar(); 
+			var selected = document.getElementsByClassName(paintAvatar)[1]; 
+			if (paintAvatar == "O") { 
+				animateO(selected); 
+			} else if (paintAvatar == "X") {
+				animateX(selected); 
+			}
+			
+			var currentMove = ","+square+paintAvatar;
+			recordMove(currentMove);
+			checkForWinCon(); 
+			avatarPlaced(square,paintAvatar);
+			squareSound();
+		}
+	}
 }
 function square3Animate() {
-    var activePlayer = document.getElementById('showPlayer').innerHTML;
-    if (activePlayer != "Game Stopped") {
-        var square = "2";
-        //
-        var verdict = recordMoves(square);
-        if (verdict == undefined) {
-            var paintAvatar = determineAvatar();                                                   //
-            var selected = document.getElementsByClassName(paintAvatar)[0];     // add '' around paint avatar ?????
-            if (paintAvatar == "0") {                                                             //
-                AnimateO(selected);
-            }  else if (paintAvatar == "X") {
-                AnimateX(selected);
-            }
-            //
-            var currentMove = ","+square+paintAvatar;
-            recordMove(currentMove);
-            checkForWinCon();
-            avatarPlaced(square, paintAvatar);
-            squareSound();
-        }
-    }
+	var activePlayer = document.getElementById('showPlayer').innerHTML;
+	if (activePlayer != "Game Stopped") {
+		var square = "2";
+		
+		var verdict = recordMoves(square);
+		if (verdict == undefined) {
+			var paintAvatar = determineAvatar();
+			var selected = document.getElementsByClassName(paintAvatar)[2]; 
+			if (paintAvatar == "O") { 
+				animateO(selected); 
+			} else if (paintAvatar == "X") {
+				animateX(selected); 
+			}
+			
+			var currentMove = ","+square+paintAvatar;
+			recordMove(currentMove);
+			checkForWinCon(); 
+			avatarPlaced(square,paintAvatar);
+			squareSound();
+		}
+	}
 }
 function square4Animate() {
-    var activePlayer = document.getElementById('showPlayer').innerHTML;
-    if (activePlayer != "Game Stopped") {
-        var square = "3";
-        //
-        var verdict = recordMoves(square);
-        if (verdict == undefined) {
-            var paintAvatar = determineAvatar();                                                   //
-            var selected = document.getElementsByClassName(paintAvatar)[0];     // add '' around paint avatar ?????
-            if (paintAvatar == "0") {                                                             //
-                AnimateO(selected);
-            }  else if (paintAvatar == "X") {
-                AnimateX(selected);
-            }
-            //
-            var currentMove = ","+square+paintAvatar;
-            recordMove(currentMove);
-            checkForWinCon();
-            avatarPlaced(square, paintAvatar);
-            squareSound();
-        }
-    }
+	var activePlayer = document.getElementById('showPlayer').innerHTML;
+	if (activePlayer != "Game Stopped") {
+		var square = "3";
+		
+		var verdict = recordMoves(square);
+		if (verdict == undefined) { 
+			var paintAvatar = determineAvatar(); 
+			var selected = document.getElementsByClassName(paintAvatar)[3]; 
+			if (paintAvatar == "O") { 
+				animateO(selected); 
+			} else if (paintAvatar == "X") {
+				animateX(selected); 
+			}
+			
+			var currentMove = ","+square+paintAvatar;
+			recordMove(currentMove);
+			checkForWinCon();
+			avatarPlaced(square,paintAvatar);
+			squareSound(); 
+		}
+	}
 }
 function square5Animate() {
-    var activePlayer = document.getElementById('showPlayer').innerHTML;
-    if (activePlayer != "Game Stopped") {
-        var square = "4";
-        //
-        var verdict = recordMoves(square);
-        if (verdict == undefined) {
-            var paintAvatar = determineAvatar();                                                   //
-            var selected = document.getElementsByClassName(paintAvatar)[0];     // add '' around paint avatar ?????
-            if (paintAvatar == "0") {                                                             //
-                AnimateO(selected);
-            }  else if (paintAvatar == "X") {
-                AnimateX(selected);
-            }
-            //
-            var currentMove = ","+square+paintAvatar;
-            recordMove(currentMove);
-            checkForWinCon();
-            avatarPlaced(square, paintAvatar);
-            squareSound();
-        }
-    }
+	var activePlayer = document.getElementById('showPlayer').innerHTML;
+	if (activePlayer != "Game Stopped") {
+		var square = "4";
+		
+		var verdict = recordMoves(square);
+		if (verdict == undefined) { 
+			var paintAvatar = determineAvatar();
+			var selected = document.getElementsByClassName(paintAvatar)[4];
+			if (paintAvatar == "O") { 
+				animateO(selected);
+			} else if (paintAvatar == "X") {
+				animateX(selected); 
+			}
+			
+			var currentMove = ","+square+paintAvatar;
+			recordMove(currentMove);
+			checkForWinCon(); 
+			avatarPlaced(square,paintAvatar); 
+			squareSound(); 
+		}
+	}
 }
 function square6Animate() {
-    var activePlayer = document.getElementById('showPlayer').innerHTML;
-    if (activePlayer != "Game Stopped") {
-        var square = "5";
-        //
-        var verdict = recordMoves(square);
-        if (verdict == undefined) {
-            var paintAvatar = determineAvatar();                                                   //
-            var selected = document.getElementsByClassName(paintAvatar)[0];     // add '' around paint avatar ?????
-            if (paintAvatar == "0") {                                                             //
-                AnimateO(selected);
-            }  else if (paintAvatar == "X") {
-                AnimateX(selected);
-            }
-            //
-            var currentMove = ","+square+paintAvatar;
-            recordMove(currentMove);
-            checkForWinCon();
-            avatarPlaced(square, paintAvatar);
-            squareSound();
-        }
-    }
+	var activePlayer = document.getElementById('showPlayer').innerHTML;
+	if (activePlayer != "Game Stopped") {
+		var square = "5";
+		
+		var verdict = recordMoves(square);
+		if (verdict == undefined) { 
+			var paintAvatar = determineAvatar(); 
+			var selected = document.getElementsByClassName(paintAvatar)[5]; 
+			if (paintAvatar == "O") { 
+				animateO(selected); 
+			} else if (paintAvatar == "X") {
+				animateX(selected);
+			}
+			
+			var currentMove = ","+square+paintAvatar;
+			recordMove(currentMove);
+			checkForWinCon(); 
+			avatarPlaced(square,paintAvatar); 
+			squareSound();
+		}
+	}
 }
 function square7Animate() {
-    var activePlayer = document.getElementById('showPlayer').innerHTML;
-    if (activePlayer != "Game Stopped") {
-        var square = "6";
-        //
-        var verdict = recordMoves(square);
-        if (verdict == undefined) {
-            var paintAvatar = determineAvatar();                                                   //
-            var selected = document.getElementsByClassName(paintAvatar)[0];     // add '' around paint avatar ?????
-            if (paintAvatar == "0") {                                                             //
-                AnimateO(selected);
-            }  else if (paintAvatar == "X") {
-                AnimateX(selected);
-            }
-            //
-            var currentMove = ","+square+paintAvatar;
-            recordMove(currentMove);
-            checkForWinCon();
-            avatarPlaced(square, paintAvatar);
-            squareSound();
-        }
-    }
+	var activePlayer = document.getElementById('showPlayer').innerHTML;
+	if (activePlayer != "Game Stopped") { 
+		var square = "6"; 
+		
+		var verdict = recordMoves(square);
+		if (verdict == undefined) { 
+			var paintAvatar = determineAvatar(); 
+			var selected = document.getElementsByClassName(paintAvatar)[6];
+			if (paintAvatar == "O") { 
+				animateO(selected); 
+			} else if (paintAvatar == "X") {
+				animateX(selected); 
+			}
+			
+			var currentMove = ","+square+paintAvatar;
+			recordMove(currentMove);
+			checkForWinCon(); 
+			avatarPlaced(square,paintAvatar); 
+			squareSound(); 
+		}
+	}
 }
 function square8Animate() {
-    var activePlayer = document.getElementById('showPlayer').innerHTML;
-    if (activePlayer != "Game Stopped") {
-        var square = "7";
-        //
-        var verdict = recordMoves(square);
-        if (verdict == undefined) {
-            var paintAvatar = determineAvatar();                                                   //
-            var selected = document.getElementsByClassName(paintAvatar)[0];     // add '' around paint avatar ?????
-            if (paintAvatar == "0") {                                                             //
-                AnimateO(selected);
-            }  else if (paintAvatar == "X") {
-                AnimateX(selected);
-            }
-            //
-            var currentMove = ","+square+paintAvatar;
-            recordMove(currentMove);
-            checkForWinCon();
-            avatarPlaced(square, paintAvatar);
-            squareSound();
-        }
-    }
+	var activePlayer = document.getElementById('showPlayer').innerHTML;
+	if (activePlayer != "Game Stopped") { 
+		var square = "7"; 
+		
+		var verdict = recordMoves(square);
+		if (verdict == undefined) { 
+			var paintAvatar = determineAvatar(); 
+			var selected = document.getElementsByClassName(paintAvatar)[7]; 
+			if (paintAvatar == "O") { 
+				animateO(selected);
+			} else if (paintAvatar == "X") {
+				animateX(selected); 
+			}
+		
+			var currentMove = ","+square+paintAvatar;
+			recordMove(currentMove);
+			checkForWinCon(); 
+			avatarPlaced(square,paintAvatar); 
+			squareSound(); 
+		}
+	}
 }
 function square9Animate() {
-    var activePlayer = document.getElementById('showPlayer').innerHTML;
-    if (activePlayer != "Game Stopped") {
-        var square = "8";
-        //
-        var verdict = recordMoves(square);
-        if (verdict == undefined) {
-            var paintAvatar = determineAvatar();                                                   //
-            var selected = document.getElementsByClassName(paintAvatar)[0];     // add '' around paint avatar ?????
-            if (paintAvatar == "0") {                                                             //
-                AnimateO(selected);
-            }  else if (paintAvatar == "X") {
-                AnimateX(selected);
-            }
-            //
-            var currentMove = ","+square+paintAvatar;
-            recordMove(currentMove);
-            checkForWinCon();
-            avatarPlaced(square, paintAvatar);
-            squareSound();
-        }
-    }
+	var activePlayer = document.getElementById('showPlayer').innerHTML;
+	if (activePlayer != "Game Stopped") {
+		var square = "8";
+		
+		var verdict = recordMoves(square);
+		if (verdict == undefined) { 
+			var paintAvatar = determineAvatar(); 
+			var selected = document.getElementsByClassName(paintAvatar)[8]; 
+			if (paintAvatar == "O") { 
+				animateO(selected); 
+			} else if (paintAvatar == "X") {
+				animateX(selected); 
+			}
+			
+			var currentMove = ","+square+paintAvatar;
+			recordMove(currentMove);
+			checkForWinCon();
+			avatarPlaced(square,paintAvatar); 
+			squareSound(); 
+		}
+	}
 }
 
-// This will perform the function for the 0 avatar
-function AnimateO(selected) {
-    selected.style.transform = (selected.style.transform == "translateY(-100%)" || null)  ? "translateY(0)" : "translateY(-100%)";
+// performs the animation for the O avatar.
+function animateO(selected) {
+	selected.style.transform = (selected.style.transform == "translateY(0%)" || null) ? "translateY(0%)" : "translateY(0%)";
 }
 
-// This will perform the function for the X avatar
-function AnimateX(selected) {
-    selected.style.transform = (selected.style.transform == "translateY(100%)" || null)  ? "translateY(0)" : "translateY(100%)";
+//performs the animation for the X avatar.
+function animateX(selected) {
+	selected.style.transform = (selected.style.transform == "translateY(-100%)" || null) ? "translateY(0%)" : "translateY(-100%)";
 }
 
 

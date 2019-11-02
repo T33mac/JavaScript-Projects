@@ -77,7 +77,6 @@ table tr:nth-child(3) td:nth-child(1) {
 .O {
     transition: transform .3s;
     opacity: 1;
-    position: absolute;
     background-image: url("../images/avatarO.png");
     width: 200px;
     height: 200px;
