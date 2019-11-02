@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HTML 1</title>
+    <script src="JS/JavaScript_1.js"></script>
+  </head>
+  <body>
+      <!--Switch Statement-->
+      <h1>What is your favorite color?</h1>
+      <h3>Pick your favorite from the list:</h3>
+      <ul>
+          <li>Blue</li>
+          <li>Yellow</li>
+          <li>Green</li>
+          <li>Purple</li>
+          <li>Orange</li>
+          <li>Red</li>
+      </ul>
+      <h3>Enter your choice below:</h3>
+
+      <input id="Color_Input" type="text">
+      <button onclick="Color_Function()">Submit</button>
+      <p id="Output"></p>
+      <!--getElementByClassName-->
+      <h1 class="click">this text will change.</h1>
+      <h3 class="click">this text will not change</h3>
+      <button onclick="Hello_World_Function()">Click me.</button><br><br>
+
+      <!--Canvas assignment-->
+      <canvas id="canvas_test" width="400px" height="200px" 
+      style="border:2px double black; background-color: lightcyan;"></canvas><br>
+      <button onclick="canvas_Function()">Click Here to change Canvas Container</button><br><br>
+
+      <!--Canvas Graphic-->
+      <img id="bikes" src="Images/bikes.jpg" alt="bikes" width="360" height="160"><br>
+      <button onclick="canvas_Graphic()">Will this fit?<br>Click</button><br><br>
+
+      <!--Gradient canvas-->
+      <canvas id="Cgradient" width="600" height="150" 
+      style="border:4px solid darkgreen; background-color:darkslateblue"></canvas><br>
+      <button onclick="grad_Canv()">Click me for<br>Gradient effect</button>
+      
+
+
+      
+
+  </body>
+</html>
