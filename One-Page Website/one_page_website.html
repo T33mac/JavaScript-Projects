@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<title>Resonator Project</title>
+	<link rel="stylesheet" href="./css/one_page_website.css">
+  </head>
+  <body>
+	<header>
+	  <h1>2018 Resonator Project</h1>
+	  
+	  <!--Nav-->
+		<div>
+			<nav>
+				<a href="#home" id="link">HOME</a>|
+				<a href="#gallery" id="link">GALLERY</a>|
+				<a href="#contact" id="link">CONTACT</a>
+			</nav>
+		</div>
+	   <!--end Nav-->
+	   
+		<h2>Photos of Progress</h2>
+	</header>
+	   
+	   <!--Gallery-->
+		<div class="row">
+			<div class="column">
+				<img src="./images/thumb/thumbnail_1.jpg" onclick="openModal();currentSlide(1)" width="255px" height="150px" class="hover-shadow">		
+			</div>
+			<div class="column">
+				<img src="./images/thumb/thumbnail_2.jpg" onclick="openModal();currentSlide(2)" width="255px" height="150px" class="hover-shadow">		
+			</div>
+			<div class="column">
+				<img src="./images/thumb/thumbnail_3.jpg" onclick="openModal();currentSlide(3)" width="255px" height="150px" class="hover-shadow">		
+			</div>
+			<div class="column">
+				<img src="./images/thumb/thumbnail_4.jpg" onclick="openModal();currentSlide(4)" width="255px" height="150px" class="hover-shadow">		
+			</div>
+			<div class="column">
+				<img src="./images/thumb/thumbnail_5.jpg" onclick="openModal();currentSlide(5)" width="255px" height="150px" class="hover-shadow">		
+			</div>
+			<div class="column">
+				<img src="./images/thumb/thumbnail_6.jpg" onclick="openModal();currentSlide(6)" width="255px" height="150px" class="hover-shadow">		
+			</div>
+			<div class="column">
+				<img src="./images/thumb/thumbnail_7.jpg" onclick="openModal();currentSlide(7)" width="255px" height="150px" class="hover-shadow">		
+			</div>
+			<div class="column">
+				<img src="./images/thumb/thumbnail_8.jpg" onclick="openModal();currentSlide(8)" width="255px" height="150px" class="hover-shadow">		
+			</div>
+			<div class="column">
+				<img src="./images/thumb/thumbnail_9.jpg" onclick="openModal();currentSlide(9)" width="255px" height="150px" class="hover-shadow">		
+			</div>
+			<div class="column">
+				<img src="./images/thumb/thumbnail_10.jpg" onclick="openModal();currentSlide(10)" width="255px" height="150px" class="hover-shadow">		
+			</div>
+		</div>
+
+		<div id="myModal" class="modal" id="gallery">
+			<span class="close cursor" onclick="closeModal()">&times;</span>
+			<div class="modal-content">
+
+				<div class="guitarSlides">
+					<div class="numbertext">1 / 10</div>
+					<img src="./images/thumb/thumbnail_1.jpg" style="width:100%">
+				</div>
+
+				<div class="guitarSlides">
+					<div class="numbertext">2 / 10</div>
+					<img src="./images/thumb/thumbnail_2.jpg" style="width:100%">
+				</div>
+
+				<div class="guitarSlides">
+					<div class="numbertext">3 / 10</div>
+					<img src="./images/thumb/thumbnail_3.jpg" style="width:100%">
+				</div>
+
+				<div class="guitarSlides">
+					<div class="numbertext">4 / 10</div>
+					<img src="./images/thumb/thumbnail_4.jpg" style="width:100%">
+				</div>
+
+				<div class="guitarSlides">
+					<div class="numbertext">5 / 10</div>
+					<img src="./images/thumb/thumbnail_5.jpg" style="width:100%">
+				</div>
+
+				<div class="guitarSlides">
+					<div class="numbertext">6 / 10</div>
+					<img src="./images/thumb/thumbnail_6.jpg" style="width:100%">
+				</div>
+
+				<div class="guitarSlides">
+					<div class="numbertext">7 / 10</div>
+					<img src="./images/thumb/thumbnail_7.jpg" style="width:100%">
+				</div>
+
+				<div class="guitarSlides">
+					<div class="numbertext">8 / 10</div>
+					<img src="./images/thumb/thumbnail_8.jpg" style="width:100%">
+				</div>
+
+				<div class="guitarSlides">
+					<div class="numbertext">9 / 10</div>
+					<img src="./images/thumb/thumbnail_9.jpg" style="width:100%">
+				</div>
+
+				<div class="guitarSlides">
+					<div class="numbertext">10 / 10</div>
+					<img src="./images/thumb/thumbnail_10.jpg" style="width:100%">
+				</div>
+
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+				
+				<div class="caption-container">
+					<p id="caption"></p>
+				</div>
+
+				<!-- Thumbnailcontrols -->
+				<div class="column_2">
+					<img class="demo cursor" src="./images/thumb/thumbnail_1.jpg" onclick="currentSlide(1)" width="110px" height="60px" alt="Finished Guitar">
+				</div>
+
+				<div class="column_2">
+					<img class="demo cursor" src="./images/thumb/thumbnail_2.jpg" onclick="currentSlide(2)" width="110px" height="60px" alt="Body Blanks">
+				</div>
+
+				<div class="column_2">
+					<img class="demo cursor" src="./images/thumb/thumbnail_3.jpg" onclick="currentSlide(3)" width="110px" height="60px" alt="Body">
+				</div>
+
+				<div class="column_2">
+					<img class="demo cursor" src="./images/thumb/thumbnail_4.jpg" onclick="currentSlide(4)" width="110px" height="60px" alt="Steel Body w/Copper Sides ">
+				</div>
+
+				<div class="column_2">
+					<img class="demo cursor" src="./images/thumb/thumbnail_5.jpg" onclick="currentSlide(5)" width="110px" height="60px" alt="Headstock">
+				</div>
+
+				<div class="column_2">
+					<img class="demo cursor" src="./images/thumb/thumbnail_6.jpg" onclick="currentSlide(6)" width="110px" height="60px" alt="Cone in Place">
+				</div>
+
+				<div class="column_2">
+					<img class="demo cursor" src="./images/thumb/thumbnail_7.jpg" onclick="currentSlide(7)" width="110px" height="60px" alt="Gluing the Heel">
+				</div>
+
+				<div class="column_2">
+					<img class="demo cursor" src="./images/thumb/thumbnail_8.jpg" onclick="currentSlide(8)" width="110px" height="60px" alt="Fretboard Prep">
+				</div>
+
+				<div class="column_2">
+					<img class="demo cursor" src="./images/thumb/thumbnail_9.jpg" onclick="currentSlide(9)" width="110px" height="60px" alt="Nut in Place">
+				</div>
+
+				<div class="column_2">
+					<img class="demo cursor" src="./images/thumb/thumbnail_10.jpg" onclick="currentSlide(10)" width="110px" height="80px" alt="Merry Christmas!">
+				</div>
+				
+			</div>
+		</div>
+		<!--End Gallery-->
+		<video width="320" height="240" controls>
+			<source src="./videos/Reso_Vid_Trim.mp4" type="video/mp4">
+			<source src="movie.ogg" type="video/ogg">
+		  Your browser does not support the video tag.
+		</video>
+		
+		<!--Home-->
+		<div id="home">
+			<p>
+				<em>I made the painted steel body years ago when I started the project.<br> 
+				It was then forgotten about until I unearthed it from the attic last year and decided to finish it. 
+				The neck material is a piece of mahogany that I found a few years back. I carved it last Christmas to finish the guitar.
+				I've recently started on some other bodies, too!</em><br>
+			</p>
+		</div>
+		<!--End Home-->
+		
+		<!--Contact-->
+		<div id="contact">
+			<div>
+				<form action="" method="get">
+					<h2>Get a Quote on a Custom Resonator Build</h2>
+					<h3>Provide your basic contact info:</h3>
+					First Name: <input type="text" name="First_Name" required><br> 
+					Last Name: <input type="text" name="Last_Name" required><br> 
+					Email: <input type="email" name="Email" required><br>  
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+	    </div>
+		<!--End Contact-->
+		
+	<footer>
+		<p1><em>&copy;Thrown together by an amatuer&copy; 2019</em></p1>
+	</footer>
+	<script src="./JS/one_page_website.js"></script>
+  </body
+</html>
