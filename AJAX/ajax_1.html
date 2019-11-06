@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Change</title>
+		
+    </head>
+    <body>
+
+        <div id="gotIt">
+			<h2>This will change.</h2>
+            <button type="button" onclick="changeIt()">Click</button>
+        </div>  
+
+        <script>
+        function changeIt() {
+            var getIt = new XMLHttpRequest();
+            getIt.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("gotIt").innerHTML =
+                    this.responseText;
+                }
+            };
+            getIt.open("GET", "get_1.html", true);
+            getIt.send();
+        }
+        </script>
+    </body>
+</html>
