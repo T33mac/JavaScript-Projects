@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title>TITLE</title>
+    <meta charset="utf-8">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  </head>
+  <body>
+        <p>If the text in this paragraph element is clicked, this will disapear and the console log will do math.</p>
+    <script>
+    
+        $('p').click(function() {
+            console.log("2 * 8 = "+(2*8));
+            $('p').hide('slow');
+        });
+
+    </script>
+  </body>
+</html>
