@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Tristan McGrath</title>
+		<link rel="stylesheet" type="text/css" href="./css/portfolio_css.css">
+		<script src="./js/portfolio_js.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	</head>
+
+    <!--body-->
+    <body class="Background"> 
+	
+	<script>
+		document.body.className += ' fade-out';
+		$(function() {
+			$('body').removeClass('fade-out');
+		}
+		);
+	</script>
+
+    <!--navbar-->
+	<div class="Navbar">
+		<a href="#Home">Home</a> 
+		<a href="#slideshow">Slideshow</a>
+		<a href="#About">About</a>
+		<a href="#GitHub">GitHub</a>
+		<a href="#Contact" class="active" onclick="openForm()">Contact</a>
+	</div>
+
+		<br>
+		<br>
+
+    <!--video-->
+	<div id="Home">
+		<video autoplay muted loop id="Main_Video">
+			<source src="./videos/Typing_Coffee.mp4" type="video/mp4">
+			Your browser does not support HTML5 video.
+		</video>
+	</div>
+
+    <!--video text--> 
+	<div class="Video_Text"> 
+		<h1 style="color:white;">Tristan McGrath's Portfolio</h1>
+			<p> 
+				<strong>
+					<center>
+                        <br>
+                        My name is Tristan. Welcome to my portfolio website.<br>
+                        On it, I will tell you about my interests,<br>
+                        my background, and my experience.<br>
+                        <br>
+                        <h2>More projects coming soon....</h2>
+					</center>	
+				</strong>
+			</p> 
+	</div>
+
+	<!--Slideshow section-->
+	<div id="slideshow">
+		<div id="Slideshow_Background">
+			<div id="Slideshow_Container">
+				<div class="mySlides fade" style="display: block;">
+					<div class="Slide_Number">1 / 4</div>
+					<img class="Slide_Show_Images" src="./images/creations.jpg" style="width: 100%;" alt="front">
+					<div class="text">Some Creations</div>
+				</div>
+				<div class="mySlides fade" style="display: none;">
+					<div class="Slide_Number">2 / 4</div>
+					<img class="Slide_Show_Images" src="./images/HTML_CSS_and_JavaScript.jpeg" style="width: 100%;" alt="grill">
+					<div class="text">Language I've Learned!</div>
+				</div>
+				<div class="mySlides fade" style="display: none;">
+					<div class="Slide_Number">3 / 4</div>
+					<img class="Slide_Show_Images" src="./images/GitHub.png" style="width: 100%;" alt="engine">
+					<div class="text">
+						<a href="https://github.com/T33mac" style="color: whitesmoke;">My Github!</a>
+					</div>
+				</div>
+				<div class="mySlides fade" style="display: none;">
+					<div class="Slide_Number">4 / 4</div>
+					<img class="Slide_Show_Images" src="./images/Mail - Copy.jpg" style="width: 100%;" alt="rear">
+					<div class="text">
+						<a onclick="openForm()" href="#Contact" style="color: whitesmoke;">Contact Me!</a>
+					</div>
+				</div>
+				<a class="Previous" onclick="plusSlides(-1)">&#8249;</a>
+				<a class="Next" onclick="plusSlides(1)">&#8250;</a>
+			</div>
+			<br>
+			<div style="text-align: center;">
+				<span class="dot active" onclick="currentSlide(1)"></span>
+				<span class="dot" onclick="currentSlide(2)"></span>
+				<span class="dot" onclick="currentSlide(3)"></span>
+				<span class="dot" onclick="currentSlide(4)"></span>
+			</div>
+	    </div>
+	</div>
+	
+	<script>
+		var slideIndex = 1;
+		 showSlides(slideIndex);
+		function plusSlides(n) {
+			showSlides(slideIndex += n);
+		}
+		function currentSlide(n) {
+			showSlides(slideIndex = n);
+		}
+		function showSlides(n) {
+			var i;
+			var slides = document.getElementsByClassName("mySlides");
+			var dots = document.getElementsByClassName("dot");
+			 if (n > slides.length) {slideIndex = 1}
+			 if (n < 1) {slideIndex = slides.length}
+			 for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
+			 }
+			 for (i=0; i < dots.length; i++) {
+			 dots[i].className = dots[i].className.replace(" active", "");
+			}
+		  slides[slideIndex-1].style.display = "block";
+		  dots[slideIndex-1].className += " active";
+		}
+	</script> 
+		
+	<!--/Slideshow section-->
+
+    <!--about section-->
+	<div class="row" id="About"> 
+		<div class="Column_2">
+			<img src="./images/typing.jpg" alt="Typing">
+		</div>
+  
+		<div class="Column_1">
+            <h1>About</h2>
+                <center>
+				<p>I am a metal designer/fabricator with an interest in computer coding. 
+                <br>Other interests include: Musical instrument design and build, restoring tube amplifiers, and travelling with my family.
+                I am currently attending The Tech Academy's Software Developer Boot Camp. If you're interested in knowing more about my interests and skills, <a style="text-decoration: underline;" onclick="openForm()">contact</a> me below!</p>
+                </center>
+		</div>
+	</div>
+
+    <!-- GitHub section -->
+	<div class="row" id="GitHub">
+		<div class="Column_1">
+			<h1>GitHub</h1>
+                    <center><a href="https://github.com/T33mac" target="_blank">View my GitHub</a></center>
+		</div>
+		
+		<div class="Column_2">
+			<a href="https://github.com/T33mac" target="_blank"><img src="./images/GitHub.png" alt="GitHub"></a>
+		</div>
+	</div>
+
+    <!-- contact section -->
+	
+
+	<button class="open-button" onclick="openForm()">CONTACT</button>
+
+  
+    <div class="form-popup" id="myForm" id="Contact">
+      <form action="/action_page.php" class="form-container">
+		<h1>Login</h1>
+		
+		<label for="name"><b>Name</b></label>
+        <input type="text" placeholder="Please enter your name here" name="name" required>
+        
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Please enter your email here" name="email" required>
+
+        <label for="message"><b>Message</b></label>
+        <input type="text" placeholder="Please write your message here" name="message" required>
+
+        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn-cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
+	
+    <!-- Footer section -->
+        <footer>
+            <p><em><center>Put together by a student 2019</center></em></p>
+        </footer>
+
+		</body>
+
+</html>
