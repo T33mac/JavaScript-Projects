@@ -37,25 +37,28 @@
     border-left: 1px solid black;
 }
 
-.grid div:nth-child(even) {
-    height: 50%;
-    color: white;
-    /*background-color: red;*/
-    /*border-top: 2px solid black;*/
-    border-bottom: 2px solid black;
-}
-
 .grid div:nth-child(odd) {
     width: 50%;
     color: white;
+    background-color: yellow;
     /*background-color: green;*/
     border-left: 1px solid black;
     border-right: 1px solid black;
 }
 
+.grid div:nth-child(even) {
+    height: 50%;
+    color: white;
+    background-color: red;
+    /*border-top: 2px solid black;*/
+    border-bottom: 2px solid black;
+}
+
+
 .grid2 div:nth-child(odd) {
     height: 50%;
     color: white;
+    background-color: red;
     /*background-color: red;*/
     /*border-top: 2px solid black;*/
     border-bottom: 2px solid black;
@@ -64,40 +67,20 @@
 .grid2 div:nth-child(even) {
     width: 50%;
     color: white;
+    background-color: blue;
     /*background-color: green;*/
     border-left: 1px solid black;
     border-right: 1px solid black;
 }
 
+/*work in an overlay or something with grid charachteristics*/
+
 .grid div:hover {
     color: white;
-    opacity: 10%;
+    opacity: 40%;
 }
 
 .grid2 div:hover {
     color: white;
-    opacity: 10%;
+    opacity: 40%;
 }
-
-.vertical {
-    border-right: 2px solid black;
-    height: 200px;
-    position: absolute;
-    right: 50%;
-    opacity: 0%;
-}
-
-.overlay {
-    position: absolute;
-    bottom: 0;
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.5); /* Black see-through */
-    color: #f1f1f1;
-    width: 100%;
-    transition: .5s ease;
-    opacity:0;
-    color: white;
-    font-size: 20px;
-    padding: 20px;
-    text-align: center;
-  }
